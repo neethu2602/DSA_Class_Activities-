@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="vh-100 d-flex justify-content-center align-items-center bg-predict-quality">
+  <div class="prediction-section p-4 rounded shadow bg-white" style="width: 450px;">
+    <h2 class="text-success mb-3 text-center">Quality Prediction</h2>
+
+    <form method="post">
+      {% csrf_token %}
+
+      <!-- Chemical Properties -->
+      <div class="mb-3">
+        <label class="form-label">Fat %</label>
+        <input type="number" step="any" name="fat" value="{{ fat }}" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">SNF %</label>
+        <input type="number" step="any" name="snf" value="{{ snf }}" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">CLR</label>
+        <input type="number" step="any" name="clr" value="{{ clr }}" class="form-control">
+      </div>
+
+      <!-- Environmental Factors -->
+      <div class="mb-3">
+        <label class="form-label">Rainfall (mm)</label>
+        <input type="number" step="any" name="rainfall_mm" value="{{ rainfall_mm }}" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Temperature (°C)</label>
+        <input type="number" step="any" name="temperature_c" value="{{ temperature_c }}" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Humidity (%)</label>
+        <input type="number" step="any" name="humidity_percent" value="{{ humidity_percent }}" class="form-control" required>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100 mt-3">Predict Quality</button>
+    </form>
+
+    {% if result %}
+    <div class="alert alert-success mt-4 text-center">
+      <h4>Predicted Quality</h4>
+      <p><b>Cluster:</b> {{ result.cluster }} | <b>Grade:</b> {{ result.grade }}</p>
+
+      <!-- Button to go to Price Prediction -->
+      <form method="get" action="{% url 'predict_price' %}">
+        <input type="hidden" name="fat" value="{{ fat }}">
+        <input type="hidden" name="snf" value="{{ snf }}">
+        <input type="hidden" name="clr" value="{{ clr }}">
+        <input type="hidden" name="rainfall_mm" value="{{ rainfall_mm }}">
+        <input type="hidden" name="temperature_c" value="{{ temperature_c }}">
+        <input type="hidden" name="humidity_percent" value="{{ humidity_percent }}">
+        <input type="hidden" name="quality_code" value="{{ result.grade }}">
+        <button type="submit" class="btn btn-primary mt-2 w-100">Predict Price</button>
+      </form>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

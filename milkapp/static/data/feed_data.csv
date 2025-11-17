@@ -1,0 +1,21 @@
+Feed Id,Type,Use,Price_Rs_per_quintal,Protein_%,Fiber_%,Milk_Yield_L_per_day,Milk_Fat%
+1,Cereal / Energy,Energy source in cattle concentrate and silage; used for fattening,2210,10,4,15,3.8
+2,By-product / Energy & fat source,Energy and fat source in cattle rations; often blended with other ingredients,2050,13,12,14,3.9
+3,Oilseed cake / Protein & energy,Protein and energy supplement for cattle (common in Kerala due to coconut availability),22200,33,14,18,4.5
+4,Oilseed cake / Protein,High-protein supplement in dairy and beef rations,3230,33,14,17,4.4
+5,Oilseed cake / Protein,Protein-rich supplement for milk-producing cattle,3045,32,14,18,4.6
+6,Oilseed meal / Protein,High-quality plant protein used in concentrates and mixed rations,2640,13,13,16,4.2
+7,Prepared concentrate,Complete or supplementary feed for dairy and beef cattle; energy and protein balanced,2000,13,13,17,4.3
+8,Oilseed cake / Protein,High-protein supplement; improves milk yield and fat content,2900,31,14,19,4.7
+9,Oilseed cake / Protein,Protein and fat source; enhances feed palatability,3100,30,14,18,4.6
+10,By-product / Energy & fiber,Provides bulk and energy; often mixed with oilcakes and grains,1900,13,13,13,3.8
+11,By-product / Energy & binder,Energy-rich syrup used in rations and silage making,700,13,12,12,3.6
+12,Oilseed cake / Protein,Protein source; improves coat and milk fat quality,2950,34,15,18,4.8
+13,Green fodder,Primary roughage source; fed fresh or ensiled,250,14,14,10,3.9
+14,Dry roughage,Roughage in maintenance and lactating diets; fed with concentrates,300,4,34,8,3.5
+15,Commercial cattle feed,Balanced feed for dairy cattle; enhances milk yield and health,2500,20,10,19,4.3
+16,Mineral mixture,Improves reproductive efficiency and milk production,3500,0,0,11,3.7
+17,Mineral supplement / Energy additive,Used for calcium and energy enrichment,4200,0,0,10,3.8
+18,Roughage / Dry fodder, maintains rumen function and fiber intake,600,4,33,9,3.5
+19,Total Mixed Ration,"balanced energy, protein, and fiber",2600,16,15,18,4.2
+20,Commercial cattle feed,Premium dairy cattle feed designed for high-milk-yield cows,2750,20,11,20,4.5

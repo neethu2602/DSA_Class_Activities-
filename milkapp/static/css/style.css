@@ -1,0 +1,247 @@
+/* =========================================
+   🎨 COLOR THEME & FONTS
+========================================= */
+:root {
+    --milk-cream: #fdf8ee;
+    --farm-green: #198754;
+    --soft-brown: #8b6b4f;
+    --primary-color: #3cb371;
+    --secondary-color: #2e8b57;
+    --danger-color: #c62828;
+    --light-bg: rgba(255, 255, 255, 0.85);
+    --dark-text: #333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('../images/bg-home.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--dark-text);
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+.navbar {
+    background-color: var(--milk-cream) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.navbar-brand i {
+    margin-right: 8px;
+    color: var(--farm-green);
+}
+.navbar .btn {
+    border-radius: 25px;
+    font-weight: 500;
+}
+
+/* =========================================
+   CONTAINER CARDS
+========================================= */
+/* 🧩 Base container (like general layout sections) */
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(3px);
+}
+
+/* 💳 Cards (for dashboard or summaries) */
+.card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* 🧠 Prediction section (for ML forms like breed/price/quality prediction) */
+.prediction-section {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 35px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(6px);
+    width: 100%;
+    max-width: 600px;
+}
+
+
+/* =========================================
+   HEADINGS
+========================================= */
+h1, h2, h3, h4 {
+    color: var(--farm-green);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* =========================================
+   FORM STYLING
+========================================= */
+form {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #444;
+}
+input, select, textarea {
+    border-radius: 12px;
+    border: 1px solid #dcdcdc;
+    padding: 12px;
+    margin-bottom: 15px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: var(--farm-green);
+    box-shadow: 0 0 5px rgba(25,135,84,0.3);
+    outline: none;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+.btn {
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: #fff;
+}
+.btn-success:hover {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+}
+.btn-outline-primary, .btn-outline-success, .btn-outline-warning {
+    font-weight: 600;
+}
+
+/* =========================================
+   TABLE STYLING
+========================================= */
+.table {
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: white;
+}
+.table thead {
+    background-color: var(--farm-green);
+    color: white;
+}
+.table-hover tbody tr:hover {
+    background-color: #f1f8e9;
+}
+
+/* =========================================
+   STAT CARDS
+========================================= */
+.stat-card {
+    border-left: 6px solid var(--farm-green);
+    padding: 20px;
+    border-radius: 14px;
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+footer {
+    margin-top: 50px;
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+    text-align: center;
+    color: #555;
+}
+footer i {
+    margin-right: 4px;
+    color: var(--farm-green);
+}
+
+/* =========================================
+   POPUP NOTIFICATIONS
+========================================= */
+.popup-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 9999;
+    font-weight: 600;
+    color: white;
+    display: none;
+}
+.popup-success { background: var(--secondary-color); }
+.popup-error { background: var(--danger-color); }
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    background: #f0f0f0;
+    color: var(--dark-text);
+    padding: 8px 15px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 500;
+}
+.back-btn:hover {
+    background: #ddd;
+    transform: scale(1.03);
+}
+
+
+
+/* =========================================
+   PAGE BACKGROUNDS
+========================================= */
+.bg-home { background: url('../images/bg.jpg') no-repeat center center fixed; background-size: cover; }
+.bg-login { background: url('../images/bg-login.jpg') no-repeat center center fixed; background-size: cover; }
+.bg-register { background: url('../images/bg-login.jpg') no-repeat center center fixed; background-size: cover; }
+.bg-dashboard { background: url('../images/bg-dashboard.jpg') no-repeat center center fixed; background-size: cover; }
+.bg-predict-price { background: url('../images/bg-price.jpg') no-repeat center center fixed; background-size: cover; }
+.bg-predict-breed { background: url('../images/bg-breed.jpg') no-repeat center center fixed; background-size: cover; }
+.bg-predict-quality { background: url('../images/bg-quality.jpg') no-repeat center center fixed; background-size: cover; }
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media (max-width: 768px) {
+    .container, .card, .prediction-section {
+        padding: 20px;
+    }
+    h1,h2,h3,h4 { font-size: 1.4rem; }
+    .btn { font-size: 0.9rem; padding: 10px 15px; }
+    .stat-card h4 { font-size: 1.1rem; }
+}

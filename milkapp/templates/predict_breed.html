@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="vh-100 d-flex justify-content-center align-items-center bg-light">
+    <div class="prediction-section p-4 rounded shadow bg-white" style="width: 450px;">
+        
+        <h2 class="text-success mb-4 text-center">🐮 Breed Prediction</h2>
+
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Avg Milk Yield (L/day)</label>
+                <input type="number" step="any" name="avg_yield" class="form-control" placeholder="Enter average milk yield" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Avg Fat %</label>
+                <input type="number" step="any" name="avg_fat" class="form-control" placeholder="Enter average fat percentage" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Avg SNF %</label>
+                <input type="number" step="any" name="avg_snf" class="form-control" placeholder="Enter SNF percentage" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Climate Tolerance</label>
+                <select name="climate_tol" class="form-select" required>
+                    <option value="">-- Select --</option>
+                    <option value="High">Moderate</option>
+                    <option value="Medium">Hot & Humid</option>
+                  
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Feed Needs</label>
+                <select name="feed_needs" class="form-select" required>
+                    <option value="">-- Select --</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Disease Resistance Level</label>
+                <select name="disease_res" class="form-select" required>
+                    <option value="">-- Select --</option>
+              
+                    <option value="Moderate">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Very High">Very High</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Use Type</label>
+                <select name="use_type" class="form-select" required>
+                    <option value="">-- Select --</option>
+                    <option value="Milk">Milk</option>
+                    <option value="Dual Purpose">Dual Purpose</option>
+
+                </select>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success mt-3 px-4 fw-bold">Predict Breed</button>
+            </div>
+        </form>
+
+    
+
+        {% if result %}
+        <div class="alert alert-success mt-4 text-center">
+            <h4>✅ Predicted Breed:</h4>
+            <p class="fs-4 fw-bold text-primary">{{ result.breed }}</p>
+
+            {% if result.cost != "N/A" %}
+                <h5 class="mt-3 text-success">💰 Typical Cost:</h5>
+                <p class="fs-5 fw-semibold">₹{{ result.cost }}</p>
+            {% else %}
+                <p class="text-muted mt-3">Cost not available for this breed.</p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if feeds %}
+<div class="mt-4">
+    <h5 class="text-success text-center mb-3">🌾 Recommended Feeds</h5>
+    <table class="table table-bordered table-sm text-center align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Type</th>
+                <th>Protein %</th>
+                <th>Fiber %</th>
+                <th>Milk Yield (L/day)</th>
+                <th>Milk Fat %</th>
+                <th>Price ₹/Qtl</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for feed in feeds %}
+            <tr>
+                <td>{{ feed.Type }}</td>
+                <td>{{ feed.Protein }}</td>
+                <td>{{ feed.Fiber }}</td>
+                <td>{{ feed.Milk_Yield }}</td>
+                <td>{{ feed.Milk_Fat }}</td>
+                <td>{{ feed.Price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+
+
+
+        {% if error %}
+        <div class="alert alert-danger mt-4 text-center">
+            <h5>⚠️ Error:</h5>
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

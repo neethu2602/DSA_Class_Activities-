@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_class %}bg-login{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg border-0 rounded-4 p-4" style="max-width: 400px; width: 100%;">
+    <div class="text-center mb-4">
+      <img src="{% static 'images/farmer-icon.png' %}" alt="Farmer Icon" width="70">
+      <h3 class="fw-bold text-success mt-3">Login</h3>
+      <p class="text-muted small">Enter your credentials</p>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-success w-100 py-2 fw-semibold">
+        Login
+      </button>
+    </form>
+    <div class="text-center mt-3">
+      <p class="small mb-0">New here? <a href="{% url 'register' %}" class="text-success fw-semibold">Register</a></p>
+    </div>
+  </div>
+</div>
+{% endblock %}

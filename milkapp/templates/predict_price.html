@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="vh-100 d-flex justify-content-center align-items-center bg-predict-price">
+  <div class="prediction-section p-4 rounded shadow bg-white" style="width: 450px;">
+    <h2 class="text-success mb-3 text-center">Milk Price Prediction</h2>
+
+    <form method="post">
+      {% csrf_token %}
+
+      <!-- Milk Chemistry -->
+      <div class="mb-3">
+        <label class="form-label">Fat %</label>
+        <input type="number" step="any" name="fat" value="{{ fat }}" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">SNF %</label>
+        <input type="number" step="any" name="snf" value="{{ snf }}" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">CLR</label>
+        <input type="number" step="any" name="clr" value="{{ clr }}" class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Litres</label>
+        <input type="number" step="any" name="litre" value="{{ litre|default:1 }}" class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Quality Code</label>
+        <input type="text" name="quality_code" value="{{ quality_code }}" class="form-control" required>
+      </div>
+
+      <!-- Environmental Inputs -->
+      <div class="mb-3">
+        <label class="form-label">Rainfall (mm)</label>
+        <input type="number" step="any" name="rainfall_mm" value="{{ rainfall_mm }}" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Temperature (°C)</label>
+        <input type="number" step="any" name="temperature_c" value="{{ temperature_c }}" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Humidity (%)</label>
+        <input type="number" step="any" name="humidity_percent" value="{{ humidity_percent }}" class="form-control" required>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100 mt-3">Predict Price</button>
+    </form>
+
+    <!-- Result -->
+    {% if result %}
+    <div class="alert alert-success mt-4 text-center">
+      <h4>Predicted Price</h4>
+      <p class="fs-4 fw-bold text-success">₹ {{ result }}</p>
+    </div>
+    {% endif %}
+
+    <!-- Error -->
+    {% if error %}
+    <div class="alert alert-danger mt-4 text-center">
+      <h4>Error</h4>
+      <p>{{ error }}</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
